@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    {% if not error %}
+    <script src='/socket.io/socket.io.js'></script>
+    {% endif %}
+</head>
+
+<body>
+    {% if error %}
+    <h3 class="error"> {{ error }} </h3>
+
+    <script src="/assets/js/unauth.js"></script>
+    {% else %}
+    <div class="container clearfix">
+        <div class="chat">
+            <div class="chat-header clearfix">
+                <div class="chat-about">
+                    <div class="chat-num-users">Hi, <span id="name">{{ username }}</span></div>
+                </div>
+            </div>
+            <div class="chat-email">
+                <label for="email">Enter your email:</label>
+                <input id="emailAddress" type="email">
+            </div>
+
+            <div class="chat-history">
+                <ul>
+                </ul>
+            </div>
+
+            <div class="chat-message clearfix">
+                <textarea name="message" placeholder="Type your message" rows="3"></textarea>
+                <button type="submit">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/auth.js"></script>
+    {% endif %}
+</body>
+
+</html>
